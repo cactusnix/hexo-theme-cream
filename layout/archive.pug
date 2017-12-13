@@ -1,0 +1,22 @@
+//- archive.pug
+
+
+extends includes/layout.pug
+
+block content
+    include includes/header.pug
+    include includes/card.pug
+    #archive
+        .archive-content
+            each page in site.posts.sort('date', -1).toArray()
+                .archive-page
+                    li.fa.fa-terminal(aria-hidden= 'true')
+                    span!= date(page.date, "MMM.Do YYYY")
+                    //- 时间预留
+                    //- + time(page.date, "HH-MM-SS")
+                    //- if page.date
+                    //-     time(datetime=page.date.toJSON())= date(page.date, "MM-DD YYYY") 
+                    a(href=config.root + page.path)= page.title
+    include includes/paginator.pug
+    include includes/footer.pug
+    include includes/sidebar.pug

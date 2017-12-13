@@ -1,0 +1,30 @@
+//- recent-posts.pug
+        
+if page.posts.length > 0
+    #recent-posts
+        //- limit的值和配置文件中的 per_page 一致
+        each post in page.posts.sort('date', -1).limit(5).toArray()
+            .recent-posts
+                .post-title
+                    //- != image_tag('https://ws3.sinaimg.cn/large/006tKfTcgy1fkldlsdajkj30z5085mxb.jpg',{width: 100%, height: 100%})
+                    a(href=config.root + post.path)= post.title
+                .post-excerpt
+                    != post.excerpt 
+                    a(href=config.root + post.path)= 'Read More'
+                //- hr
+                .post-info
+                    .info
+                        .favicon
+                            img(src=config.root + 'favicon.ico')
+                        .author
+                            span!= config.author
+                            br
+                            span!= date(post.date, "MMM.Do YYYY")
+                            //- 时间预留
+                            //- + time(post.date, "HH-MM-SS")
+                            //- if post.date
+                            //-     time(datetime=post.date.toJSON())= date(post.date, "MM-DD YYYY") 
+                    .tag
+                        != list_tags(post.tags, {show_count: false, style: none, separator: ' '})
+                        
+                        

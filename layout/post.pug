@@ -1,0 +1,29 @@
+extends includes/layout.pug
+
+block content
+    include includes/header.pug
+    article#post
+        .post-content
+            .page-title
+                h1!= page.title
+            .page-info
+                    .info
+                        .favicon
+                            img(src=config.root + 'favicon.ico')
+                        .author
+                            span!= config.author
+                            br
+                            span!= date(page.date, "MMM.Do YYYY")
+                            //- 时间预留
+                            //- + time(post.date, "HH-MM-SS")
+                            //- if post.date
+                            //-     time(datetime=post.date.toJSON())= date(post.date, "MM-DD YYYY") 
+                    .tag
+                        != list_tags(page.tags, {show_count: false, style: none, separator: ' '})
+                        i.fa.fa-share-alt(aria-hidden= 'true')
+            .page-content
+                != page.content
+    include includes/paginator.pug
+    include includes/footer.pug
+    include includes/sidebar.pug
+    

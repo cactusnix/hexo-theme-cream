@@ -1,0 +1,21 @@
+# html lang
+language: en
+
+# main menu navigation
+menu:
+  Home: /
+  About: /about
+  Archives: /archives
+
+# Miscelaneous
+favicon: /favicon.ico
+
+# stylesheets loaded in the <head>
+stylesheets:
+- /css/cream.css
+- /lib/font-awesome/css/font-awesome.min.css
+
+# scripts loaded in the end of the body
+scripts:
+- /lib/jQuery/jquery-3.2.1.js
+- /js/cream.js

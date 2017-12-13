@@ -1,0 +1,8 @@
+//- sidebar.pug
+
+#sidebar
+    nav
+        ul
+            each url, label in theme.menu
+                li
+                    a(href=url)= label

@@ -1,0 +1,23 @@
+//- paginator.pug
+
+-
+    var options = {
+        prev_text: '<span class="prev_left"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>',
+        next_text: '<span class="next_right"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>',
+        end_size
+    }
+#pagination
+    if(!is_post())
+        .pagination
+            !=paginator(options)
+    else 
+        if(page.prev)
+            .prev-post.pull-left
+                a(href=url_for(page.prev.path))
+                    i.fa.fa-arrow-left  
+                    span= ' 旧篇'
+        if(page.next)
+            .next-post.pull-right
+                a(href=url_for(page.next.path))
+                    span= '新篇 ' 
+                    i.fa.fa-arrow-right
